@@ -21,7 +21,7 @@ const ContactListItem = ({ name, id, number }) => {
 
   
     return (
-      <ListItem key={id}
+      <ListItem  key={id}
       secondaryAction={
         <IconButton edge="end" aria-label="delete" onClick={() => onDelete(id)}>
           <DeleteIcon  variant="contained" color="success"  type='submit' />

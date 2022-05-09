@@ -1,4 +1,6 @@
 import React from 'react';
+import mainImg from '../icons/pexels-jess-bailey-designs-788946.jpg'
+import s from './HomeView.module.css'
 
 const styles = {
   container: {
@@ -6,6 +8,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundImage: `url(${mainImg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
   },
   title: {
     fontWeight: 500,
@@ -14,15 +19,14 @@ const styles = {
   },
 };
 
+
+
+
 const HomeView = () => (
   <div style={styles.container}>
-    <h1 style={styles.title}>
-    Вітальна сторінка нашого сервісу{' '}
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </h1>
   </div>
 );
 
 export default HomeView;
+
+
