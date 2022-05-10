@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Copyright(props) {
   return (
@@ -53,14 +55,17 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (!name) return toast.error('Please enter user name');
+    if (!email) return toast.error('Please enter email');
+    if (!password) return toast.error('Please enter password');
+    
+
     dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
   };
-
-
-
 
 
   return (
@@ -81,17 +86,21 @@ export default function RegisterView() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate  sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleSubmit} >
             <Grid container spacing={2} >
               <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
+                  aria-label="Input for your name"
+                  type="text"
                   name="name"
                   required
                   fullWidth
                   id="name"
                   label="name"
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                   value={name} onChange={handleChange}
+                  title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
                   autoFocus
                 />
               </Grid>
@@ -102,7 +111,10 @@ export default function RegisterView() {
                   fullWidth
                   id="email"
                   label="Email Address"
+                  type="email"
                   name="email"
+                  aria-label="Input for your Email"
+                  pattern="/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$"
                   autoComplete="email"
                   value={email}
                  onChange={handleChange}
@@ -114,9 +126,11 @@ export default function RegisterView() {
                   fullWidth
                   name="password"
                   label="Password"
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  aria-label="Input for your password"
                   value={password}
                   onChange={handleChange}
                 />
@@ -146,6 +160,7 @@ export default function RegisterView() {
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
+        <ToastContainer/>
       </Container>
     </ThemeProvider>
   );

@@ -3,6 +3,7 @@ import { authSelectors, authOperations } from '../../redux/auth';
 import defaultAvatar from './default-avatar.png';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 const styles = {
@@ -55,14 +56,14 @@ function stringAvatar(name) {
   return (
     <div style={styles.container}>
    
-      <span style={styles.name}>Ласкаво просимо</span>
+      <span style={styles.name}>{name}</span>
       <Stack style={styles.name} direction="row" spacing={2}>
         
       <Avatar {...stringAvatar(`${name}`)} />
      </Stack>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
-        Выйти
-      </button>
+
+     <Button color="success" size="small" variant="contained" type="button" onClick={() => dispatch(authOperations.logOut())} >Вийти</Button>
+  
     </div>
   );
 }

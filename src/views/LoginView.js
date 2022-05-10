@@ -15,6 +15,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Copyright(props) {
   return (
@@ -49,6 +51,8 @@ export default function LoginView() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (!email) return toast.error('Please enter email');
+    if (!password) return toast.error('Please enter password');
     dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
@@ -72,9 +76,11 @@ export default function LoginView() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit}>
             <TextField
               margin="normal"
+              type="email"
+              aria-label="Input for your email"
               required
               fullWidth
               id="email"
@@ -96,6 +102,7 @@ export default function LoginView() {
               value={password}
               onChange={handleChange}
               autoComplete="current-password"
+              aria-label="Input for your password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -124,6 +131,7 @@ export default function LoginView() {
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
+        <ToastContainer />
       </Container>
     </ThemeProvider>
   );

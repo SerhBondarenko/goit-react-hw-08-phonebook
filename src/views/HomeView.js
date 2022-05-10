@@ -1,5 +1,5 @@
 import React from 'react';
-import mainImg from '../icons/pexels-jess-bailey-designs-788946.jpg'
+//import mainImg from '../icons/pexels-jess-bailey-designs-788946.jpg'
 import s from './HomeView.module.css'
 
 const styles = {
@@ -8,13 +8,13 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundImage: `url(${mainImg})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    //backgroundImage: `url(${mainImg})`,
+    //backgroundRepeat: 'no-repeat',
+   // backgroundSize: 'cover',
   },
   title: {
     fontWeight: 500,
-    fontSize: 48,
+    fontSize: 18,
     textAlign: 'center',
   },
 };
@@ -23,8 +23,11 @@ const styles = {
 
 
 const HomeView = () => (
-  <div style={styles.container}>
-  </div>
+  <div style={styles.container} >
+ <div style={styles.title}  >
+   <h1>Ви на головній сторінці нашого сервісу</h1>
+ </div>
+ </div>
 );
 
 export default HomeView;

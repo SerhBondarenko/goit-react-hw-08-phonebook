@@ -67,9 +67,10 @@ import TextField from '@mui/material/TextField';
             value={name}
             onChange={handleChangeName}
             placeholder="Enter name"
+            aria-label="Input for your name"
             id={nameInputId}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            title="Name may contain only letters, apostrophe, dash and spaces."
             required
           />
         </label>

@@ -51,6 +51,11 @@ export default function App() {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={
+          <PublicRoute >
+           <HomeView/>
+           </PublicRoute>}
+          />
       </Routes>
     </Suspense>
   </Container>
